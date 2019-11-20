@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "film-develop",
+    "public": "dist/line-liff",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

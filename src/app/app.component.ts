@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'line-liff';
+  profile: any;
+  
+  getProfile(event){
+    this.profile = event
+  }
 }
