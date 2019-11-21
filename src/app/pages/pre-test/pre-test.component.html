@@ -1,0 +1,20 @@
+<div class="header">
+    <span class="title pre-test">Pre-Test</span>
+</div>
+<div class="bg-grey">
+    <form class="needs-validation" [formGroup]="choice" (ngSubmit)="onSubmit()">
+        <label>การออมเงินที่ถูกต้อง คือ เก็บ ก่อน ใช้</label>
+        <div class="inputGroup" [ngClass]="{'check':f.answer.value == 'yes' , 'error': submitted && f.answer.errors }">
+            <input id="option1" formControlName="answer" name="answer"  value="yes" [ngClass]="{'error': submitted && f.answer.errors }"  type="radio" />
+            <label for="option1" [ngClass]="{'error': submitted && f.answer.errors }" >ใช่</label>
+        </div>
+        <div class="inputGroup" [ngClass]="{'check':f.answer.value == 'no' ,  'error': submitted && f.answer.errors }">
+            <input id="option2" formControlName="answer" name="answer"  value="no" [ngClass]="{'error': submitted && f.answer.errors }" type="radio" />
+            <label for="option2" [ngClass]="{'error': submitted && f.answer.errors }">ไม่ใช่</label>
+        </div>
+
+        <div class=" m-auto">
+            <button class="btn  col-md-12 btn-lg btn-block">CONTINUE</button>
+        </div>
+    </form>
+</div>

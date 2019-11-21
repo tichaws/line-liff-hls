@@ -1,18 +1,34 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { CustomerService } from '../services/customer/customer.service';
 
 @Component({
   selector: 'app-line-liff',
   templateUrl: './line-liff.component.html',
-  styleUrls: ['./line-liff.component.scss']
+  styleUrls: ['./line-liff.component.scss'],
+  providers:[ CustomerService ]
 })
 // declare var liff: any;
 
 export class LineLiffComponent implements OnInit {
+
+  constructor(private customerService:CustomerService){}
+
   @Output() getProfile = new EventEmitter();
   profile: LIFFUserProfile;
   message: string;
   title = 'hello! ';
   ngOnInit() { 
+    let profile_data = {
+      data:{
+        line_account : {
+          user_id: 'this.profile.userId',
+          display_name: 'this.profile.displayName'
+        },
+      }
+    }
+    this.customerService.createCustomer(profile_data).then((resp:any)=>{
+      console.log(resp)
+    })
     new Promise<LIFFUserProfile>(resolve => {
       liff
       .init({
@@ -20,18 +36,26 @@ export class LineLiffComponent implements OnInit {
       })
       .then((resp) => {
           // start to use LIFF's api
-          console.log(resp)
           resolve(liff.getProfile());
       })
       .catch((err) => {
           console.log(err)
-          // document.getElementById("liffAppContent").className.add('hidden');
-          // document.getElementById("liffInitErrorMessage").className.remove('hidden');
       });
     })
       .then((profile) => {
         this.profile = profile;
         this.getProfile.emit(profile)
+        let profile_data = {
+          data:{
+            line_account : {
+              user_id: 'this.profile.userId',
+              display_name: 'this.profile.displayName'
+            },
+          }
+        }
+        this.customerService.createCustomer(profile_data).then((resp:any)=>{
+          console.log(resp)
+        })
         // liff.sendMessages([{
         //   'type': 'image',
         //   'originalContentUrl': profile.pictureUrl,

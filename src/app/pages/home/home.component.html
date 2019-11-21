@@ -1,0 +1,38 @@
+<div class="login-wrap">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+        <label for="tab-1" class="tab"></label>
+        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+        <div class="login-form">
+            <div class="sign-in-htm">
+                <img src="/assets/images/logo-csr.svg" class="Logo-CSR margin-top-25 margin-bottom-25">
+                <div class="group">
+                    <h1 for="pass" class="label upper">CSR</h1>
+                    <h5 for="pass" class="label">Greeted with the
+                        attractive screen</h5>
+                </div>
+                <div class="group margin-top-100">
+                    <input type="submit" class="button" [routerLink]="['/pages/pre-test']" value="Get Strated">
+                </div>
+                <div class="group">
+                    <label for="pass" class="label upper font12" (click)="openModal()">Success</label>
+                    <label for="pass" class="label upper font12"
+                        [routerLink]="['/pages/instruction']">INSTRUCTION</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template let-context let-modal="modal" #modalTemplate>
+    <div class="ui basic ">
+        <div class="m-5">
+            <img src="/assets/images/mascot.svg" class="Logo-CSR margin-top-25 margin-bottom-25">
+        </div>
+        <div class="content text-center">
+            <p>ท่านได้ร่วมกิจกรรมไปแล้ว</p>
+        </div>
+        <div class="actions text-center mt-3">
+            <button type="button" class="btn btn-danger col-12" data-dismiss="modal">Back</button>
+        </div>
+    </div>
+</ng-template>
